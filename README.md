@@ -38,11 +38,19 @@ $ npm install
 # development
 $ npm run start
 
+<<<<<<< HEAD
 # watch mode
 $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+=======
+# Subir o docker
+$ docker compose up -d
+
+# Roda pela primeira vez as migrations 
+$ npm run migration:run
+>>>>>>> 3c705c6 (CRUD realty)
 ```
 
 ## Test

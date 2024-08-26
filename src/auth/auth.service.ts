@@ -18,8 +18,13 @@ export class AuthService {
     );
   }
 
+<<<<<<< HEAD
   signIn(username: string, password: string): AuthResponseDto {
     const foundUser = this.usersService.findByUserName(username);
+=======
+  async signIn(username: string, password: string): Promise<AuthResponseDto> {
+    const foundUser = await this.usersService.findByUserName(username);
+>>>>>>> 3c705c6 (CRUD realty)
 
     if (!foundUser || !compareSync(password, foundUser.password)) {
       throw new UnauthorizedException();

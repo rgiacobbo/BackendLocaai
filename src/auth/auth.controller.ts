@@ -8,10 +8,18 @@ export class AuthController {
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
+<<<<<<< HEAD
   signIn(
     @Body('username') username: string,
     @Body('password') password: string,
   ): AuthResponseDto {
     return this.authService.signIn(username, password);
+=======
+  async signIn(
+    @Body('name') name: string,
+    @Body('password') password: string,
+  ): Promise<AuthResponseDto> {
+    return this.authService.signIn(name, password);
+>>>>>>> 3c705c6 (CRUD realty)
   }
 }
