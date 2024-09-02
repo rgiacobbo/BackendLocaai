@@ -10,8 +10,14 @@ import { RealtyService } from './realty/realty.service';
 import { RealtyModule } from './realty/realty.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), UsersModule, AuthModule, DbModule, RealtyModule],
-  controllers: [AppController, RealtyController],
-  providers: [AppService, RealtyService],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    UsersModule,
+    AuthModule,
+    DbModule,
+    RealtyModule,
+  ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

@@ -1,42 +1,52 @@
-import { ConflictException, HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { UserDto, User } from './user';
-import { v4 as uuid } from 'uuid';
+import {
+  ConflictException,
+  HttpException,
+  HttpStatus,
+  Injectable,
+} from '@nestjs/common';
+import { UserDto } from './user';
 import { hashSync as bcryptHashSync } from 'bcrypt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from 'src/db/entities/user.entity';
-import { Repository } from 'typeorm'
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class UsersService {
-
   constructor(
     @InjectRepository(UserEntity)
-    private readonly userRepository: Repository<UserEntity>
+    private readonly userRepository: Repository<UserEntity>,
   ) {}
 
-  findAll() {
-    return this.userRepository.find();
+  async findAll() {
+    const users = await this.userRepository.find();
+    const usersFinal = users.map((obj) => {
+      const objCopy = { ...obj };
+      delete objCopy.password;
+      return objCopy;
+    });
+    return usersFinal;
   }
 
   async findById(id: string) {
     const userFound = await this.userRepository.findOne({
-      where: {id}
-    })
+      where: { id },
+    });
 
     delete userFound.password;
 
     if (!userFound) {
       throw Error(`Usuário com o ID ${id} não encontrada.`);
     }
+    delete userFound.password;
     return userFound;
   }
 
   async findByUserName(name: string): Promise<UserDto | null> {
     const userFound = await this.userRepository.findOne({
-      where: {name}
-    })
+      where: { name },
+    });
 
-    if(!userFound){
+    if (!userFound) {
       return null;
     }
 
@@ -44,18 +54,15 @@ export class UsersService {
       id: userFound.id,
       name: userFound.name,
       password: userFound.password,
-      ...userFound
-    }
-
+      ...userFound,
+    };
   }
 
   async create(userDto: UserDto) {
     const userAlreadyRegistered = await this.findByUserName(userDto.name);
 
     if (userAlreadyRegistered) {
-      throw new ConflictException(
-        `User '${userDto.name}' already registered`,
-      );
+      throw new ConflictException(`User '${userDto.name}' already registered`);
     }
 
     const dbUser = new UserEntity();
@@ -66,13 +73,14 @@ export class UsersService {
     dbUser.cpf = userDto.cpf;
     dbUser.city = userDto.city;
 
-    const { id, name, phone, email, cpf, city } = await this.userRepository.save(dbUser);
-    return { id, name, phone, email, cpf, city};
+    const { id, name, phone, email, cpf, city } =
+      await this.userRepository.save(dbUser);
+    return { id, name, phone, email, cpf, city };
   }
 
   //Update ainda ta dando pau. Tenque ver sobre a questão dos DTOS
   async update(id: string, userDto: UserDto) {
-    const foundTask = await this.userRepository.findOne({ where: { id } })
+    const foundTask = await this.userRepository.findOne({ where: { id } });
 
     if (!foundTask) {
       throw new HttpException(
@@ -85,7 +93,7 @@ export class UsersService {
   }
 
   async remove(id: string) {
-    const result = await this.userRepository.delete(id)
+    const result = await this.userRepository.delete(id);
 
     if (!result.affected) {
       throw new HttpException(
@@ -103,8 +111,8 @@ export class UsersService {
       email: userEntity.email,
       city: userEntity.city,
       phone: userEntity.phone,
-      cpf: userEntity.cpf
-    }
+      cpf: userEntity.cpf,
+    };
   }
 
   private mapDtoToEntity(userDto: UserDto): Partial<UserEntity> {
@@ -114,7 +122,7 @@ export class UsersService {
       email: userDto.email,
       city: userDto.city,
       phone: userDto.phone,
-      cpf: userDto.cpf
-    }
+      cpf: userDto.cpf,
+    };
   }
 }
