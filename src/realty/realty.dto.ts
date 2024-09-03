@@ -1,5 +1,10 @@
+import { IsOptional } from 'class-validator';
+import { UserEntity } from 'src/db/entities/user.entity';
+
 export class RealtyDto {
-  idrealty: string;
+  @IsOptional()
+  id: string;
+  userId: UserEntity;
   title: string;
   value: number;
   description: string;

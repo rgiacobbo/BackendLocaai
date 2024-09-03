@@ -26,7 +26,7 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @ApiParam({ name: 'id'})
+  @ApiParam({ name: 'id' })
   @ApiBearerAuth()
   @UseGuards(AuthGuard)
   @Get(':id')
@@ -45,7 +45,7 @@ export class UsersController {
   @ApiBearerAuth()
   @ApiBody({ type: [UserDto] })
   @UseGuards(AuthGuard)
-  @ApiParam({ name: 'id'})
+  @ApiParam({ name: 'id' })
   @Put(':id')
   update(@Param('id') id, @Body() userDto: UserDto) {
     return this.usersService.update(id, userDto).catch((e) => {
@@ -55,7 +55,7 @@ export class UsersController {
 
   @ApiBearerAuth()
   @UseGuards(AuthGuard)
-  @ApiParam({ name: 'id'})
+  @ApiParam({ name: 'id' })
   @Delete(':id')
   delete(@Param('id') id) {
     return this.usersService.remove(id).catch((e) => {

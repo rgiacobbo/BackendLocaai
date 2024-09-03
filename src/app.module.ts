@@ -5,8 +5,6 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { DbModule } from './db/db.module';
-import { RealtyController } from './realty/realty.controller';
-import { RealtyService } from './realty/realty.service';
 import { RealtyModule } from './realty/realty.module';
 
 @Module({

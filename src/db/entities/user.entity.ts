@@ -31,7 +31,7 @@ export class UserEntity {
   @Column({ type: 'varchar', length: 255 })
   cpf: string;
 
-  @OneToMany(() => RealtyEntity, (realty) => realty.user)
+  @OneToMany(() => RealtyEntity, (realty) => realty.userId)
   realtys: RealtyEntity[];
 
   @CreateDateColumn({ name: 'created_at' })

@@ -37,11 +37,10 @@ export class UsersService {
     if (!userFound) {
       throw Error(`Usuário com o ID ${id} não encontrada.`);
     }
-    delete userFound.password;
     return userFound;
   }
 
-  async findByUserName(name: string): Promise<UserDto | null> {
+  async findByUserName(name: string): Promise<UserEntity | null> {
     const userFound = await this.userRepository.findOne({
       where: { name },
     });

@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import { UserEntity } from './user.entity';
 
@@ -29,7 +30,8 @@ export class RealtyEntity {
   capacity: number;
 
   @ManyToOne(() => UserEntity, (user) => user.realtys)
-  user: UserEntity;
+  @JoinColumn({ name: 'userId' })
+  userId: UserEntity;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

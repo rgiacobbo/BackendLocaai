@@ -11,11 +11,11 @@ export class Migrations1725206831335 implements MigrationInterface {
         description VARCHAR(255) NOT NULL,
         date VARCHAR(255) NOT NULL,
         capacity INTEGER NOT NULL,
-        user_id UUID,
+        userId UUID,
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT realty_pk_id PRIMARY KEY (id),
-        CONSTRAINT realty_fk_user FOREIGN KEY (user_id) REFERENCES tbuser(id)
+        CONSTRAINT realty_fk_user FOREIGN KEY (userId) REFERENCES tbuser(id)
     );`);
   }
 
