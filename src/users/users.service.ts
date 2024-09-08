@@ -102,17 +102,17 @@ export class UsersService {
     }
   }
 
-  private mapEntityToDto(userEntity: UserEntity): UserDto {
-    return {
-      id: userEntity.id,
-      name: userEntity.name,
-      password: userEntity.password,
-      email: userEntity.email,
-      city: userEntity.city,
-      phone: userEntity.phone,
-      cpf: userEntity.cpf,
-    };
-  }
+  // private mapEntityToDto(userEntity: UserEntity): UserDto {
+  //   return {
+  //     id: userEntity.id,
+  //     name: userEntity.name,
+  //     password: userEntity.password,
+  //     email: userEntity.email,
+  //     city: userEntity.city,
+  //     phone: userEntity.phone,
+  //     cpf: userEntity.cpf,
+  //   };
+  // }
 
   private mapDtoToEntity(userDto: UserDto): Partial<UserEntity> {
     return {

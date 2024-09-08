@@ -24,7 +24,10 @@ export class RealtyService {
     });
 
     if (!userFound) {
-      throw Error(`Usuário com o ID ${id} não encontrada.`);
+      throw new HttpException(
+        `Realty with id '${id}' not found`,
+        HttpStatus.BAD_REQUEST,
+      );
     }
     return userFound;
   }
@@ -43,6 +46,19 @@ export class RealtyService {
     return { id, title, value, description, date, capacity, userId };
   }
 
+  async update(id: string, realtyDto: RealtyDto) {
+    const foundTask = await this.realtyRepository.findOne({ where: { id } });
+
+    if (!foundTask) {
+      throw new HttpException(
+        `Realty with id '${id}' not found`,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    await this.realtyRepository.update(id, this.mapDtoToEntity(realtyDto));
+  }
+
   async remove(id: string) {
     const result = await this.realtyRepository.delete(id);
 
@@ -52,5 +68,16 @@ export class RealtyService {
         HttpStatus.BAD_REQUEST,
       );
     }
+  }
+
+  private mapDtoToEntity(realtyDto: RealtyDto): Partial<RealtyEntity> {
+    return {
+      title: realtyDto.title,
+      userId: realtyDto.userId,
+      value: realtyDto.value,
+      description: realtyDto.description,
+      date: realtyDto.date,
+      capacity: realtyDto.capacity,
+    };
   }
 }

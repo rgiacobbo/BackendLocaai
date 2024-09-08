@@ -14,7 +14,6 @@ import { AuthGuard } from 'src/auth/auth.guard';
 import { RealtyService } from './realty.service';
 import { RealtyDto } from './realty.dto';
 import { User } from 'src/users/users.decorator';
-import { UserEntity } from 'src/db/entities/user.entity';
 
 @Controller('realty')
 export class RealtyController {
@@ -22,8 +21,7 @@ export class RealtyController {
 
   @UseGuards(AuthGuard)
   @Get()
-  findAll(@User() user: any) {
-    console.log(user);
+  findAll() {
     return this.realtyService.findAll();
   }
 
@@ -31,9 +29,17 @@ export class RealtyController {
   @Get(':id')
   findById(@Param('id') id) {
     return this.realtyService.findById(id).catch((e) => {
-      throw new NotFoundException(e.user);
+      throw new NotFoundException(e.realty);
     });
   }
+
+  // @UseGuards(AuthGuard)
+  // @Get('/user:id')
+  // findByUserAndAll(@Param('id') id) {
+  //   return this.realtyService.findById(id).catch((e) => {
+  //     throw new NotFoundException(e.realty);
+  //   });
+  // }
 
   @UseGuards(AuthGuard)
   @Post()
@@ -45,13 +51,13 @@ export class RealtyController {
     return this.realtyService.create(realtyDto, userId);
   }
 
-  // @UseGuards(AuthGuard)
-  // @Put(':id')
-  // update(@Param('id') id, @Body() userDto: UserDto) {
-  //   return this.realtyService.update(id, userDto).catch((e) => {
-  //     throw new NotFoundException(e.user);
-  //   });
-  // }
+  @UseGuards(AuthGuard)
+  @Put(':id')
+  update(@Param('id') id, @Body() realtyDto: RealtyDto) {
+    return this.realtyService.update(id, realtyDto).catch((e) => {
+      throw new NotFoundException(e.realty);
+    });
+  }
 
   @UseGuards(AuthGuard)
   @Delete(':id')
