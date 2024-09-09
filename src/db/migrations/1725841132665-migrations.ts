@@ -12,7 +12,7 @@ export class Migrations1725841132665 implements MigrationInterface {
         state VARCHAR(45) NOT NULL,
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        CONSTRAINT fk_address_realty FOREIGN KEY (id) REFERENCES tbrealty(id)
+        CONSTRAINT fk_address_realty FOREIGN KEY (id) REFERENCES tbrealty(id) ON DELETE CASCADE
     );`);
   }
 

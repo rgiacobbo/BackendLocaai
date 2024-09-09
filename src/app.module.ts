@@ -6,7 +6,6 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { DbModule } from './db/db.module';
 import { RealtyModule } from './realty/realty.module';
-import { AddressController } from './address/address.controller';
 import { AddressModule } from './address/address.module';
 
 @Module({
@@ -18,7 +17,7 @@ import { AddressModule } from './address/address.module';
     RealtyModule,
     AddressModule,
   ],
-  controllers: [AppController, AddressController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
