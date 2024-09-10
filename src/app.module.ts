@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { DbModule } from './db/db.module';
 import { RealtyModule } from './realty/realty.module';
 import { AddressModule } from './address/address.module';
+import { RatingModule } from './rating/rating.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { AddressModule } from './address/address.module';
     DbModule,
     RealtyModule,
     AddressModule,
+    RatingModule,
   ],
   controllers: [AppController],
   providers: [AppService],

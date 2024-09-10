@@ -6,8 +6,10 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
 import { UserEntity } from './user.entity';
+import { RatingEntity } from './rating.entity';
 
 @Entity({ name: 'tbrealty' })
 export class RealtyEntity {
@@ -32,6 +34,9 @@ export class RealtyEntity {
   @ManyToOne(() => UserEntity, (user) => user.realtys)
   @JoinColumn({ name: 'userId' })
   userId: UserEntity;
+
+  @OneToMany(() => RatingEntity, (rating) => rating.realtyId)
+  ratings: RatingEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
