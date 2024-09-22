@@ -8,6 +8,7 @@ import { DbModule } from './db/db.module';
 import { RealtyModule } from './realty/realty.module';
 import { AddressModule } from './address/address.module';
 import { RatingModule } from './rating/rating.module';
+import { AdvertisingModule } from './advertising/advertising.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { RatingModule } from './rating/rating.module';
     RealtyModule,
     AddressModule,
     RatingModule,
+    AdvertisingModule,
   ],
   controllers: [AppController],
   providers: [AppService],
