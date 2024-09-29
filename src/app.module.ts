@@ -9,6 +9,7 @@ import { RealtyModule } from './realty/realty.module';
 import { AddressModule } from './address/address.module';
 import { RatingModule } from './rating/rating.module';
 import { AdvertisingModule } from './advertising/advertising.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AdvertisingModule } from './advertising/advertising.module';
     AddressModule,
     RatingModule,
     AdvertisingModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -10,8 +10,7 @@ export class Migrations1727640890872 implements MigrationInterface {
             amountPaid DOUBLE NOT NULL,
             tax INTEGER NOT NULL,
             created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            CONSTRAINT fk_realty_rating FOREIGN KEY (id) REFERENCES tbrealty(id) ON DELETE CASCADE
+            updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
         );`);
   }
 
@@ -19,3 +18,5 @@ export class Migrations1727640890872 implements MigrationInterface {
     await queryRunner.query(`DROP TABLE IF EXISTS tbpayment;`);
   }
 }
+
+//CONSTRAINT fk_realty_rating FOREIGN KEY (id) REFERENCES tbrealty(id) ON DELETE CASCADE
