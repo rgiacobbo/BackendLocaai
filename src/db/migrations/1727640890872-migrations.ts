@@ -7,7 +7,7 @@ export class Migrations1727640890872 implements MigrationInterface {
             CREATE TABLE "tbpayment" (
             id UUID PRIMARY KEY,
             typePayment VARCHAR(255) NOT NULL,
-            amountPaid DOUBLE NOT NULL,
+            amountPaid INTEGER NOT NULL,
             tax INTEGER NOT NULL,
             created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP

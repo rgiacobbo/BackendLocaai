@@ -14,7 +14,7 @@ export class PaymentEntity {
   @Column({ type: 'varchar', length: 255 })
   typePayment: string;
 
-  @Column({ type: 'double' })
+  @Column({ type: 'integer' })
   amountPaid: number;
 
   @Column({ type: 'integer' })
