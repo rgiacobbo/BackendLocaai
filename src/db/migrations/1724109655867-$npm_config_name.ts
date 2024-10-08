@@ -12,6 +12,7 @@ export class $npmConfigName1724109655867 implements MigrationInterface {
         city VARCHAR(255) NOT NULL,
         phone VARCHAR(255) NOT NULL,
         cpf VARCHAR(255) NOT NULL,
+        filterUser VARCHAR(255),
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT user_pk_id PRIMARY KEY (id),

@@ -71,10 +71,11 @@ export class UsersService {
     dbUser.email = userDto.email;
     dbUser.cpf = userDto.cpf;
     dbUser.city = userDto.city;
+    dbUser.filterUser = userDto.filterUser;
 
-    const { id, name, phone, email, cpf, city } =
+    const { id, name, phone, email, cpf, city, filterUser } =
       await this.userRepository.save(dbUser);
-    return { id, name, phone, email, cpf, city };
+    return { id, name, phone, email, cpf, city, filterUser };
   }
 
   //Update ainda ta dando pau. Tenque ver sobre a questão dos DTOS
@@ -122,6 +123,7 @@ export class UsersService {
       city: userDto.city,
       phone: userDto.phone,
       cpf: userDto.cpf,
+      filterUser: userDto.filterUser,
     };
   }
 }

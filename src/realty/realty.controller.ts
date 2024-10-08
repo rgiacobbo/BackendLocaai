@@ -14,17 +14,22 @@ import { AuthGuard } from 'src/auth/auth.guard';
 import { RealtyService } from './realty.service';
 import { RealtyDto } from './realty.dto';
 import { User } from 'src/users/users.decorator';
+import { ApiBearerAuth, ApiParam, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Realty')
 @Controller('realty')
 export class RealtyController {
   constructor(private realtyService: RealtyService) {}
 
+  @ApiBearerAuth()
   @UseGuards(AuthGuard)
   @Get()
   findAll() {
     return this.realtyService.findAll();
   }
 
+  @ApiParam({ name: 'id' })
+  @ApiBearerAuth()
   @UseGuards(AuthGuard)
   @Get(':id')
   findById(@Param('id') id) {
@@ -41,6 +46,7 @@ export class RealtyController {
   //   });
   // }
 
+  @ApiBearerAuth()
   @UseGuards(AuthGuard)
   @Post()
   create(@Body() realtyDto: RealtyDto, @User('sub') userId: string) {
@@ -51,6 +57,8 @@ export class RealtyController {
     return this.realtyService.create(realtyDto, userId);
   }
 
+  @ApiParam({ name: 'id' })
+  @ApiBearerAuth()
   @UseGuards(AuthGuard)
   @Put(':id')
   update(@Param('id') id, @Body() realtyDto: RealtyDto) {
@@ -59,6 +67,8 @@ export class RealtyController {
     });
   }
 
+  @ApiParam({ name: 'id' })
+  @ApiBearerAuth()
   @UseGuards(AuthGuard)
   @Delete(':id')
   delete(@Param('id') id) {

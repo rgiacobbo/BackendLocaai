@@ -6,5 +6,5 @@ export class FilterEntity {
   id: string;
 
   @Column({ type: 'varchar', length: 255 })
-  name: string;
+  nameFilter: string;
 }
