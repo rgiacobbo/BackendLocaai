@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
@@ -9,6 +7,9 @@ import { RealtyModule } from './realty/realty.module';
 import { AddressModule } from './address/address.module';
 import { RatingModule } from './rating/rating.module';
 import { AdvertisingModule } from './advertising/advertising.module';
+import { PaymentModule } from './payment/payment.module';
+import { LocationModule } from './location/location.module';
+import { FiltersModule } from './filters/filters.module';
 
 @Module({
   imports: [
@@ -20,8 +21,9 @@ import { AdvertisingModule } from './advertising/advertising.module';
     AddressModule,
     RatingModule,
     AdvertisingModule,
+    PaymentModule,
+    LocationModule,
+    FiltersModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

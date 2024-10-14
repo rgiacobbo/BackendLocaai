@@ -9,8 +9,8 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
-    .setTitle('Users example')
-    .setDescription('The cats API description')
+    .setTitle('Documentation of routes Locations Events')
+    .setDescription('Documentation API Routes')
     .setVersion('1.0')
     .addBearerAuth()
     .build();

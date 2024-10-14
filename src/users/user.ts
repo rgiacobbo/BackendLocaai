@@ -29,6 +29,10 @@ export class UserDto {
   @MinLength(10)
   @MaxLength(12)
   cpf: string;
+
+  @ApiProperty()
+  @IsString()
+  filterUser: string;
 }
 
 export interface User {
@@ -39,4 +43,5 @@ export interface User {
   email: string;
   cpf: string;
   city: string;
+  filterUser: string;
 }

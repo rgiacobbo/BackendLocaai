@@ -1,0 +1,52 @@
+src
+├── address
+│   ├── address.controller.ts
+│   ├── address.service.ts
+│   ├── address.module.ts
+│   └── address.dto.ts
+├── advertising
+│   ├── advertising.controller.ts
+│   ├── advertising.service.ts
+│   ├── advertising.module.ts
+│   └── advertising.dto.ts
+├── auth
+│   ├── auth.controller.ts
+│   ├── auth.service.ts
+│   ├── auth.module.ts
+│   ├── auth.guard.ts
+│   └── auth.dto.ts
+├── db
+│   ├── entities
+│   │   └── entity.ts
+│   ├── migrations
+│   │   └── migration.ts
+│   ├── db.module.ts
+│   └── typeOrm.migrations-config.ts
+├── location
+│   ├── location.controller.ts
+│   ├── location.service.ts
+│   ├── location.module.ts
+│   └── location.dto.ts
+├── payment
+│   ├── payment.controller.ts
+│   ├── payment.service.ts
+│   ├── payment.module.ts
+│   └── payment.dto.ts
+├── rating
+│   ├── rating.controller.ts
+│   ├── rating.service.ts
+│   ├── rating.module.ts
+│   └── rating.dto.ts
+├── realty
+│   ├── realty.controller.ts
+│   ├── realty.service.ts
+│   ├── realty.module.ts
+│   └── realty.dto.ts
+├── users
+│   ├── users.controller.ts
+│   ├── users.service.ts
+│   ├── users.module.ts
+│   └── users.dto.ts
+├── app.module.ts
+├── main.ts
+└── .env
