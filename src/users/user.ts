@@ -1,5 +1,6 @@
 import { IsString, MaxLength, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { UserEntity } from 'src/db/entities/user.entity';
 
 export class UserDto {
   @ApiProperty()
@@ -33,6 +34,9 @@ export class UserDto {
   @ApiProperty()
   @IsString()
   filterUser: string;
+
+  locations: UserEntity;
+  tenants: UserEntity;
 }
 
 export interface User {
@@ -44,4 +48,6 @@ export interface User {
   cpf: string;
   city: string;
   filterUser: string;
+  locations: UserEntity;
+  tenants: UserEntity;
 }
