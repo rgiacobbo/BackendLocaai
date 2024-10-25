@@ -1,12 +1,15 @@
 import { Module } from '@nestjs/common';
-import { FiltersController } from './filters.controller';
-import { FiltersService } from './filters.service';
-import { FilterEntity } from 'src/db/entities/filter.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { FiltersService } from './filters.service';
+import { FiltersController } from './filters.controller';
+import { FilterEntity } from '../db/entities/filter.entity';
+import { RealtyEntity } from '../db/entities/realty.entity';
 
 @Module({
-  controllers: [FiltersController],
+  imports: [
+    TypeOrmModule.forFeature([FilterEntity, RealtyEntity]),
+  ],
   providers: [FiltersService],
-  imports: [TypeOrmModule.forFeature([FilterEntity])],
+  controllers: [FiltersController],
 })
 export class FiltersModule {}

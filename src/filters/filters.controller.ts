@@ -17,7 +17,7 @@ export class FiltersController {
   @UseGuards(AuthGuard)
   @ApiBody({ type: [FilterDto] })
   @Post()
-  create(@Body() filterDto: FilterDto) {
-    return this.filtersService.create(filterDto);
+  create(@Body() filterDto: FilterDto, realtyId:string) {
+    return this.filtersService.create(filterDto, realtyId);
   }
 }

@@ -10,6 +10,7 @@ import {
 } from 'typeorm';
 import { UserEntity } from './user.entity';
 import { RatingEntity } from './rating.entity';
+import { FilterEntity } from './filter.entity';
 
 @Entity({ name: 'tbrealty' })
 export class RealtyEntity {
@@ -37,6 +38,9 @@ export class RealtyEntity {
 
   @OneToMany(() => RatingEntity, (rating) => rating.realtyId)
   ratings: RatingEntity[];
+
+  @OneToMany(() => FilterEntity, (filter) => filter.realty)
+  filters: FilterEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
