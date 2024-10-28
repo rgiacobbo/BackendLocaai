@@ -7,6 +7,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import { RealtyEntity } from './realty.entity';
+import { LocationEntity } from './location.entity';
 
 @Entity({ name: 'tbuser' })
 export class UserEntity {
@@ -36,6 +37,12 @@ export class UserEntity {
 
   @OneToMany(() => RealtyEntity, (realty) => realty.userId)
   realtys: RealtyEntity[];
+
+  @OneToMany(() => LocationEntity, (location) => location.userLessor)
+  locations: LocationEntity[];
+
+  @OneToMany(() => LocationEntity, (location) => location.userTenant)
+  tenants: LocationEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

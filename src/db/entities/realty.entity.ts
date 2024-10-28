@@ -47,4 +47,10 @@ export class RealtyEntity {
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
+
+  @Column({ type: 'varchar', length: 255 })
+  latitude: string;
+
+  @Column({ type: 'varchar', length: 255 })
+  longitude: string;
 }

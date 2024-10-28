@@ -1,9 +1,11 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { RealtyEntity } from './realty.entity';
 
@@ -24,4 +26,10 @@ export class RatingEntity {
   @ManyToOne(() => RealtyEntity, (realty) => realty.ratings)
   @JoinColumn({ name: 'realtyId' })
   realtyId: RealtyEntity;
+
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: Date;
 }

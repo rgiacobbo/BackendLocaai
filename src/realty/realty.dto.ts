@@ -10,6 +10,8 @@ export class RealtyDto {
   description: string;
   date: string;
   capacity: number;
+  latitude: string;
+  longitude: string;
 }
 
 export interface Realty {}

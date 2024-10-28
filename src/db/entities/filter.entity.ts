@@ -1,5 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { RealtyEntity } from './realty.entity';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+  CreateDateColumn,
+} from 'typeorm';
 
 @Entity({ name: 'tbfilter' })
 export class FilterEntity {
@@ -9,7 +14,9 @@ export class FilterEntity {
   @Column({ type: 'varchar', length: 255 })
   nameFilter: string;
 
-  @ManyToOne(() => RealtyEntity, (realty) => realty.filters)
-  @JoinColumn({ name: 'realtyId' })
-  realty: RealtyEntity;
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: Date;
 }
