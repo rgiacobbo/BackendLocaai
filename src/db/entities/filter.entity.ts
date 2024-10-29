@@ -8,8 +8,8 @@ import {
 
 @Entity({ name: 'tbfilter' })
 export class FilterEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn({ type: 'integer' })
+  id: number;
 
   @Column({ type: 'varchar', length: 255 })
   nameFilter: string;
