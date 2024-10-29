@@ -8,8 +8,16 @@ export class RealtyDto {
   title: string;
   value: number;
   description: string;
-  date: string;
-  capacity: number;
+  category: string;
+  adress: string;
+  no: number;
+  city: string;
+  state: string;
+  cep: string;
+  room: number;
+  bathroom: number;
+  garage: number;
+  area: number;
   latitude: string;
   longitude: string;
 }

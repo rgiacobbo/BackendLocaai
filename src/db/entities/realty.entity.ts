@@ -27,10 +27,38 @@ export class RealtyEntity {
   description: string;
 
   @Column({ type: 'varchar', length: 255 })
-  date: string;
+  category: string;
+
+  @Column({ type: 'varchar', length: 255 })
+  adress: string;
 
   @Column({ type: 'integer' })
-  capacity: number;
+  no: number;
+
+  @Column({ type: 'varchar' })
+  city: string;
+
+  @Column({ type: 'varchar' })
+  state: string;
+
+  @Column({ type: 'varchar' })
+  cep: string;
+
+  //TEM QUE VER COMO POR FOTOS NO NEST JS
+  /*@Column({ type: 'integer' })
+  photo: number;*/
+
+  @Column({ type: 'integer' })
+  room: number;
+
+  @Column({ type: 'integer' })
+  bathroom: number;
+
+  @Column({ type: 'integer' })
+  garage: number;
+
+  @Column({ type: 'integer' })
+  area: number;
 
   @ManyToOne(() => UserEntity, (user) => user.realtys)
   @JoinColumn({ name: 'userId' })
