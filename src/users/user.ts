@@ -32,7 +32,6 @@ export class UserDto {
   cpf: string;
 
   @ApiProperty()
-  @IsString()
   filterUser: string;
 
   locations: UserEntity;

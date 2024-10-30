@@ -71,7 +71,7 @@ export class UsersService {
     dbUser.email = userDto.email;
     dbUser.cpf = userDto.cpf;
     dbUser.city = userDto.city;
-    dbUser.filterUser = userDto.filterUser;
+    dbUser.filterUser = userDto.filterUser ? String(userDto.filterUser) : '';
 
     const { id, name, phone, email, cpf, city, filterUser } =
       await this.userRepository.save(dbUser);
