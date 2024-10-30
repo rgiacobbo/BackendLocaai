@@ -5,7 +5,7 @@ export class Migrations1728347773616 implements MigrationInterface {
     await queryRunner.query(`CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`);
     await queryRunner.query(`
         CREATE TABLE "tbfilter" (
-        id UUID PRIMARY KEY,
+        id INTEGER PRIMARY KEY,
         nameFilter VARCHAR(255) 
     );`);
   }
