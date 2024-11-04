@@ -17,9 +17,7 @@ export class RealtyDto {
   room: number;
   bathroom: number;
   garage: number;
-  area: number;
-  latitude: string;
-  longitude: string;
+  area: number
 }
 
 export interface Realty {}

@@ -71,12 +71,12 @@ export class UsersService {
     dbUser.email = userDto.email;
     dbUser.cpf = userDto.cpf;
     dbUser.city = userDto.city;
-    dbUser.filterUser = userDto.filterUser || '';
+    dbUser.filterUser = userDto.filterUser ? String(userDto.filterUser) : '';
 
     const { id, name, phone, email, cpf, city, filterUser } =
-      await this.userRepository.save(dbUser);
+        await this.userRepository.save(dbUser);
     return { id, name, phone, email, cpf, city, filterUser };
-  }
+}
 
   //Update ainda ta dando pau. Tenque ver sobre a questão dos DTOS
   async update(id: string, userDto: UserDto) {

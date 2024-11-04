@@ -21,8 +21,7 @@ import { ApiBearerAuth, ApiParam, ApiTags } from '@nestjs/swagger';
 export class RealtyController {
   constructor(private realtyService: RealtyService) {}
 
-  @ApiBearerAuth()
-  @UseGuards(AuthGuard)
+  
   @Get()
   findAll() {
     return this.realtyService.findAll();

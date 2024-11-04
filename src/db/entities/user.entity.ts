@@ -32,7 +32,7 @@ export class UserEntity {
   @Column({ type: 'varchar', length: 255 })
   cpf: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', nullable: true })
   filterUser: string;
 
   @OneToMany(() => RealtyEntity, (realty) => realty.userId)

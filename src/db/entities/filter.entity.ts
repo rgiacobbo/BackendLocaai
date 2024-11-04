@@ -6,8 +6,8 @@ export class FilterEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'varchar', length: 255 })
-  nameFilter: string;
+  @Column("text", { array: true })
+  nameFilter: string[];
 
   @ManyToOne(() => RealtyEntity, (realty) => realty.filters)
   @JoinColumn({ name: 'realtyId' })
