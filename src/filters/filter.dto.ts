@@ -1,9 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsArray, IsString } from 'class-validator';
+import { RealtyDto } from 'src/realty/realty.dto';
 
 export class FilterDto {
   @ApiProperty()
-  nameFilter: string;
+  @IsArray()
+  @IsString({ each: true })
+  nameFilter: string[];
+  realtyId:RealtyDto
 }
 
 export interface Filter {

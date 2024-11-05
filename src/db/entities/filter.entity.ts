@@ -1,22 +1,15 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-  CreateDateColumn,
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { RealtyEntity } from './realty.entity';
 
 @Entity({ name: 'tbfilter' })
 export class FilterEntity {
   @PrimaryGeneratedColumn({ type: 'integer' })
   id: number;
 
-  @Column({ type: 'varchar', length: 255 })
-  nameFilter: string;
+  @Column("text", { array: true })
+  nameFilter: string[];
 
-  @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
-
-  @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  @ManyToOne(() => RealtyEntity, (realty) => realty.filters)
+  @JoinColumn({ name: 'realtyId' })
+  realty: RealtyEntity;
 }

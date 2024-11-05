@@ -1,4 +1,4 @@
-import { IsString, MaxLength, MinLength } from 'class-validator';
+import { IsString, MaxLength, MinLength,IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { UserEntity } from 'src/db/entities/user.entity';
 
@@ -32,7 +32,9 @@ export class UserDto {
   cpf: string;
 
   @ApiProperty()
-  filterUser: string;
+  @IsOptional()
+  @IsString()
+  filterUser?: string;
 
   locations: UserEntity;
   tenants: UserEntity;
