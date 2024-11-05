@@ -20,6 +20,8 @@ export class Migrations1725206831335 implements MigrationInterface {
         garage INTEGER NOT NULL,
         area INTEGER NOT NULL,
         userId UUID,
+        latitude VARCHAR(255),
+        longitude VARCHAR(255),
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT realty_pk_id PRIMARY KEY (id),

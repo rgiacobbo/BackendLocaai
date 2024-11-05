@@ -60,6 +60,12 @@ export class RealtyEntity {
   @Column({ type: 'integer' })
   area: number;
 
+  @Column({ type: 'varchar', length: 255 })
+  latitude: string;
+
+  @Column({ type: 'varchar', length: 255 })
+  longitude: string;
+
   @ManyToOne(() => UserEntity, (user) => user.realtys)
   @JoinColumn({ name: 'userId' })
   userId: UserEntity;
