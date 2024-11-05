@@ -3,8 +3,8 @@ import { RealtyEntity } from './realty.entity';
 
 @Entity({ name: 'tbfilter' })
 export class FilterEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn({ type: 'integer' })
+  id: number;
 
   @Column("text", { array: true })
   nameFilter: string[];
