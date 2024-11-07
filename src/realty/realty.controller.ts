@@ -37,6 +37,12 @@ export class RealtyController {
     });
   }
 
+  @UseGuards(AuthGuard) // Garante que apenas usuários autenticados possam acessar
+  @Get('user/:userId')
+  async getRealtyByUserId(@Param('userId') userId: string) {
+    return this.realtyService.findByUserId(userId);
+  }
+
   // @UseGuards(AuthGuard)
   // @Get('/user:id')
   // findByUserAndAll(@Param('id') id) {
