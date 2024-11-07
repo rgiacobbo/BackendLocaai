@@ -18,6 +18,7 @@ export class RealtyDto {
   bathroom: number;
   garage: number;
   area: number
+  nameFilter: string[];
   latitude: string;
   longitude: string;
 }

@@ -60,6 +60,9 @@ export class RealtyEntity {
   @Column({ type: 'integer' })
   area: number;
 
+  @Column("text", { array: true })
+  nameFilter: string[];
+
   @Column({ type: 'varchar', length: 255 })
   latitude: string;
 
