@@ -113,6 +113,7 @@ export class RealtyService {
       bathroom: realtyDto.bathroom,
       garage: realtyDto.garage,
       area: realtyDto.area,
+      nameFilter: realtyDto.nameFilter
     };
   }
 }
