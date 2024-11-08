@@ -19,7 +19,6 @@ export class Migrations1725206831335 implements MigrationInterface {
         bathroom INTEGER NOT NULL,
         garage INTEGER NOT NULL,
         area INTEGER NOT NULL,
-        nameFilter VARCHAR(255)[],
         userId UUID,
         latitude VARCHAR(255),
         longitude VARCHAR(255),
