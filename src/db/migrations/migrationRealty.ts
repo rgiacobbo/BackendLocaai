@@ -34,3 +34,4 @@ export class Migrations1725206831335 implements MigrationInterface {
     await queryRunner.query(`DROP TABLE IF EXISTS tbrealty;`);
   }
 }
+
