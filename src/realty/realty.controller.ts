@@ -21,8 +21,7 @@ import { ApiBearerAuth, ApiParam, ApiTags } from '@nestjs/swagger';
 export class RealtyController {
   constructor(private realtyService: RealtyService) {}
 
-  @ApiBearerAuth()
-  @UseGuards(AuthGuard)
+  
   @Get()
   findAll() {
     return this.realtyService.findAll();
@@ -36,6 +35,12 @@ export class RealtyController {
     return this.realtyService.findById(id).catch((e) => {
       throw new NotFoundException(e.realty);
     });
+  }
+
+  @UseGuards(AuthGuard) // Garante que apenas usuários autenticados possam acessar
+  @Get('user/:userId')
+  async getRealtyByUserId(@Param('userId') userId: string) {
+    return this.realtyService.findByUserId(userId);
   }
 
   // @UseGuards(AuthGuard)
