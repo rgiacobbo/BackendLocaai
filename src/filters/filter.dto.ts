@@ -7,7 +7,7 @@ export class FilterDto {
   @IsArray()
   @IsString({ each: true })
   nameFilter: string[];
-  realtyId:RealtyDto
+  realtyId: RealtyDto;
 }
 
 export interface Filter {
