@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RealtyEntity } from 'src/db/entities/realty.entity';
 import { Repository } from 'typeorm';
-import { RealtyDto } from './realty.dto';
+import { Realty, RealtyDto } from './realty.dto';
 import { UserEntity } from 'src/db/entities/user.entity';
 
 @Injectable()
@@ -95,6 +95,18 @@ export class RealtyService {
         HttpStatus.BAD_REQUEST,
       );
     }
+  }
+
+  async getProperties(category?: string): Promise<Realty[]> {
+    // Se houver uma categoria, filtra as propriedades com essa categoria
+    if (category) {
+      return this.realtyRepository.find({
+        where: { category },  // Filtro pela categoria
+      });
+    }
+  
+    // Se não houver categoria, retorna todas as propriedades
+    return this.realtyRepository.find();
   }
 
   private mapDtoToEntity(realtyDto: RealtyDto): Partial<RealtyEntity> {

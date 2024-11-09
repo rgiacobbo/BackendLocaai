@@ -7,12 +7,13 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 
 import { AuthGuard } from 'src/auth/auth.guard';
 import { RealtyService } from './realty.service';
-import { RealtyDto } from './realty.dto';
+import { Realty, RealtyDto } from './realty.dto';
 import { User } from 'src/users/users.decorator';
 import { ApiBearerAuth, ApiParam, ApiTags } from '@nestjs/swagger';
 
@@ -81,4 +82,12 @@ export class RealtyController {
       throw new NotFoundException(e.realty);
     });
   }
+
+
+  
+  @Get()
+async getProperties(@Query('category') category?: string): Promise<Realty[]> {
+  // Verifica se há algum filtro de categoria, se sim, passa para o serviço
+  return this.realtyService.getProperties(category);
+}
 }
