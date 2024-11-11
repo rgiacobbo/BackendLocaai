@@ -32,8 +32,13 @@ export class UserEntity {
   @Column({ type: 'varchar', length: 255 })
   cpf: string;
 
-  @Column({ type: 'varchar', nullable: true })
-  filterUser: string;
+
+  
+  @Column({ type: 'varchar', length: 350, nullable: true})
+  about: string;
+
+  /* @Column({ type: 'varchar', nullable: true })
+  filterUser: string; */
 
   @OneToMany(() => RealtyEntity, (realty) => realty.userId)
   realtys: RealtyEntity[];
