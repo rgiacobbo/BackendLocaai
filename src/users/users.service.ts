@@ -124,7 +124,7 @@ export class UsersService {
       city: userDto.city,
       phone: userDto.phone,
       cpf: userDto.cpf,
-      about: userDto.about,
+      about: userDto.about, // esse aqui é o campo de "sobre o usuário" na tela do perfil
       // filterUser: userDto.filterUser,
     };
   }

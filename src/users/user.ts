@@ -32,6 +32,7 @@ export class UserDto {
   cpf: string;
 
 
+  // esse aqui é o campo de "sobre o usuário" na tela do perfil
   @ApiProperty()
   @IsOptional()
   @IsString()

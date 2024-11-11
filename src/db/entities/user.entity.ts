@@ -33,7 +33,7 @@ export class UserEntity {
   cpf: string;
 
 
-  
+  // esse aqui é o campo de "sobre o usuário" na tela do perfil
   @Column({ type: 'varchar', length: 350, nullable: true})
   about: string;
 
