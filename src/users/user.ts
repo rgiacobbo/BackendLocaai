@@ -1,4 +1,4 @@
-import { IsString, MaxLength, MinLength,IsOptional } from 'class-validator';
+import { IsString, MaxLength, MinLength,IsOptional, isString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { UserEntity } from 'src/db/entities/user.entity';
 
@@ -31,10 +31,18 @@ export class UserDto {
   @MaxLength(12)
   cpf: string;
 
+
   @ApiProperty()
   @IsOptional()
   @IsString()
-  filterUser?: string;
+  @MaxLength(350)
+  about?: string;
+
+
+  /*@ApiProperty()
+  @IsOptional()
+  @IsString()
+  filterUser?: string; */
 
   locations: UserEntity;
   tenants: UserEntity;
@@ -48,7 +56,8 @@ export interface User {
   email: string;
   cpf: string;
   city: string;
-  filterUser: string;
+  about: string;
+  //filterUser: string;
   locations: UserEntity;
   tenants: UserEntity;
 }
