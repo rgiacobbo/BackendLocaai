@@ -11,6 +11,7 @@ import { PaymentModule } from './payment/payment.module';
 import { LocationModule } from './location/location.module';
 import { FiltersModule } from './filters/filters.module';
 import { ImagensModule } from './imagens/imagens.module';
+import { MercadopagoModule } from './mercadopago/mercadopago.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { ImagensModule } from './imagens/imagens.module';
     LocationModule,
     FiltersModule,
     ImagensModule,
+    MercadopagoModule,
   ],
 })
 export class AppModule {}
