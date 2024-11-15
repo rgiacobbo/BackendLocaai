@@ -24,7 +24,7 @@ export class AppService {
             id: '1',
             title: 'Novo pagamento',
             quantity: 1,
-            unit_price: 100,
+            unit_price: 1,
           },
         ],
       },
