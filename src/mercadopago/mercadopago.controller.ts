@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import * as fs from 'node:fs/promises';
 import { AppService } from './mercadopago.service';
 
@@ -27,8 +27,11 @@ export class AppController {
   }
 
   @Get('/generate-payment-link')
-  async generatePaymentLink(): Promise<any> {
-    return await this.appService.generatePaymentLink();
+  async generatePaymentLink(
+    @Param('id') id,
+    @Param('price') price,
+  ): Promise<any> {
+    return await this.appService.generatePaymentLink(id, price);
   }
 
   @Get('/get-payments')

@@ -11,7 +11,7 @@ export class AppService {
     return 'Hello World!';
   }
 
-  async generatePaymentLink(): Promise<any> {
+  async generatePaymentLink(id: string, price: number): Promise<any> {
     const client = new MercadoPagoConfig({
       accessToken: MERCADO_PAGO_TOKEN,
     });
@@ -21,10 +21,10 @@ export class AppService {
       body: {
         items: [
           {
-            id: '1',
+            id: id,
             title: 'Novo pagamento',
             quantity: 1,
-            unit_price: 5,
+            unit_price: price,
           },
         ],
       },
