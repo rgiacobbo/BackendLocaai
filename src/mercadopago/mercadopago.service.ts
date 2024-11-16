@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 import { MercadoPagoConfig, Preference } from 'mercadopago';
+import { MercadoPagoDTO } from './mercadopago';
 require('dotenv').config();
 
 const MERCADO_PAGO_TOKEN = process.env.ACCESS_TOKEN;
@@ -11,24 +12,26 @@ export class AppService {
     return 'Hello World!';
   }
 
-  async generatePaymentLink(id: string, price: number): Promise<any> {
+  async generatePaymentLink(mercadoPagoDTO: MercadoPagoDTO): Promise<any> {
     const client = new MercadoPagoConfig({
       accessToken: MERCADO_PAGO_TOKEN,
     });
 
     const preference = new Preference(client);
-    return await preference.create({
+
+    const pagamento = await preference.create({
       body: {
         items: [
           {
-            id: id,
-            title: 'Novo pagamento',
+            id: mercadoPagoDTO.id,
+            title: mercadoPagoDTO.title,
             quantity: 1,
-            unit_price: price,
+            unit_price: mercadoPagoDTO.price,
           },
         ],
       },
     });
+    return pagamento.init_point;
   }
 
   async getPayments(): Promise<any> {
