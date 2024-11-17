@@ -7,7 +7,7 @@ export class Migrations1725206831335 implements MigrationInterface {
         CREATE TABLE "tbrealty" (
         id UUID NOT NULL DEFAULT uuid_generate_v4(),
         title VARCHAR(255) NOT NULL,
-        value INTEGER NOT NULL,
+        value FLOAT NOT NULL,
         description VARCHAR(255) NOT NULL,
         category VARCHAR(255) NOT NULL,
         adress VARCHAR(255) NOT NULL,
@@ -20,6 +20,7 @@ export class Migrations1725206831335 implements MigrationInterface {
         garage INTEGER NOT NULL,
         area INTEGER NOT NULL,
         nameFilter VARCHAR(255)[],
+        photo BYTEA,
         userId UUID,
         latitude VARCHAR(255),
         longitude VARCHAR(255),

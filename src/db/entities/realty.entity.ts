@@ -20,7 +20,7 @@ export class RealtyEntity {
   @Column({ type: 'varchar', length: 255 })
   title: string;
 
-  @Column({ type: 'integer' })
+  @Column({ type: 'float' })
   value: number;
 
   @Column({ type: 'varchar', length: 255 })
@@ -44,9 +44,8 @@ export class RealtyEntity {
   @Column({ type: 'varchar' })
   cep: string;
 
-  //TEM QUE VER COMO POR FOTOS NO NEST JS
-  /*@Column({ type: 'integer' })
-  photo: number;*/
+  @Column('simple-array', { nullable: true })
+  photo: string[];
 
   @Column({ type: 'integer' })
   room: number;

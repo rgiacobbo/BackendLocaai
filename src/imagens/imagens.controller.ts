@@ -1,6 +1,7 @@
 import {
   Controller,
   Get,
+  Param,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -20,11 +21,11 @@ export class ImagensController {
     return result;
   }
 
-  @Get('/')
-  async listUrl() {
-    const result = await this.imagensService.listUrl();
+  @Get('/:imageName')
+async listUrl(@Param('imageName') imageName: string) {
+    const result = await this.imagensService.listUrl(imageName);
     return result;
-  }
+}
 
   @Get('/all')
   async listAll() {

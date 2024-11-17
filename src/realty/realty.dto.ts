@@ -21,6 +21,7 @@ export class RealtyDto {
   nameFilter: string[];
   latitude: string;
   longitude: string;
+  photo: string[]
 }
 
 export interface Realty {}

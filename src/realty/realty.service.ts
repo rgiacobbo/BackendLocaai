@@ -67,10 +67,11 @@ export class RealtyService {
     dbRealty.latitude = realtyDto.latitude ? String(realtyDto.latitude) : '';
     dbRealty.longitude = realtyDto.longitude ? String(realtyDto.longitude) : '';
     dbRealty.userId = { id: user } as UserEntity;
+    dbRealty.photo = realtyDto.photo;
 
-    const { id, title, value, description, category, adress, no, city, state, cep, room, bathroom, garage, area,nameFilter,  userId } =
+    const { id, title, value, description, category, adress, no, city, state, cep, room, bathroom, garage, area,nameFilter,  userId, photo } =
       await this.realtyRepository.save(dbRealty);
-    return { id, title, value, description, category, adress, no, city, state, cep, room, bathroom, garage, area,nameFilter, userId };
+    return { id, title, value, description, category, adress, no, city, state, cep, room, bathroom, garage, area,nameFilter, userId, photo };
   }
 
   async update(id: string, realtyDto: RealtyDto) {
@@ -125,7 +126,8 @@ export class RealtyService {
       bathroom: realtyDto.bathroom,
       garage: realtyDto.garage,
       area: realtyDto.area,
-      nameFilter: realtyDto.nameFilter
+      nameFilter: realtyDto.nameFilter,
+      photo: realtyDto.photo
     };
   }
 }

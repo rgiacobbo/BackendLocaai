@@ -24,20 +24,31 @@ export class ImagensService {
   }
 
   // gera o link
-  async listUrl() {
+  async listUrl(imageName) {
+    if (!imageName) {
+        throw new Error("Nome da imagem não fornecido.");
+    }
+
     const supabaseURL = process.env.SUPABASE_URL;
     const supabaseKEY = process.env.SUPABASE_KEY;
 
     const supabase = createClient(supabaseURL, supabaseKEY, {
-      auth: {
-        persistSession: false,
-      },
+        auth: {
+            persistSession: false,
+        },
     });
+
     const { data, error } = await supabase.storage
-      .from('Imagens')
-      .createSignedUrl('1234e.jpg', 32000000); // o tempo para expirar esta com 1 ano. Não tem como gerar sem o tempo para expirar
+        .from('Imagens')
+        .createSignedUrl(imageName, 32000000); // Substitui 1234e.jpg pelo nome fornecido
+
+    if (error) {
+        console.error("Erro ao gerar URL assinada:", error);
+        return null;
+    }
+
     return data;
-  }
+}
 
   async listAll() {
     const supabaseURL = process.env.SUPABASE_URL;

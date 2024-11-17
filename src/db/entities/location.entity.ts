@@ -8,6 +8,7 @@ import {
   ManyToOne,
 } from 'typeorm';
 import { UserEntity } from './user.entity';
+import { RealtyEntity } from './realty.entity';
 
 @Entity({ name: 'tblocation' })
 export class LocationEntity {
@@ -23,9 +24,9 @@ export class LocationEntity {
   @Column({ type: 'date' })
   dateEnd: Date;
 
-  //   @ManyToOne(() => RealtyEntity, (realty) => realty.ratings)
-  //   @JoinColumn({ name: 'realtyId' })
-  //   realtyId: RealtyEntity;
+  @ManyToOne(() => RealtyEntity, (realty) => realty.ratings)
+  @JoinColumn({ name: 'realtyId' })
+  realtyId: RealtyEntity;
 
   @ManyToOne(() => UserEntity, (user) => user.locations)
   @JoinColumn({ name: 'userLocation' })
