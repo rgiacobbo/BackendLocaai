@@ -3,5 +3,6 @@
         "encontrada",
         "Mensagem",
         "Usuário"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }

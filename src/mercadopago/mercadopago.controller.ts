@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import * as fs from 'node:fs/promises';
 import { AppService } from './mercadopago.service';
 import { MercadoPagoDTO } from './mercadopago';
@@ -29,9 +29,22 @@ export class AppController {
 
   @Get('/generate-payment-link')
   async generatePaymentLink(
-    @Body() mercadoPagoDTO: MercadoPagoDTO,
+    @Query('id') id: string,           // Obtendo o ID via query string
+    @Query('title') title: string,     // Obtendo o título via query string
+    @Query('price') price: string,
   ): Promise<any> {
+    const mercadoPagoDTO: MercadoPagoDTO = { 
+      id, 
+      title, 
+      price: parseFloat(price), // Converte para número
+    };
+  
+    if (isNaN(mercadoPagoDTO.price)) {
+      throw new Error('O preço fornecido não é um número válido.');
+    }
+  
     return await this.appService.generatePaymentLink(mercadoPagoDTO);
+  
   }
 
   @Get('/get-payments')
