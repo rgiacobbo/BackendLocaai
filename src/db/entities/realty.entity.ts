@@ -23,7 +23,7 @@ export class RealtyEntity {
   @Column({ type: 'float' })
   value: number;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 1000 })
   description: string;
 
   @Column({ type: 'varchar', length: 255 })
@@ -59,7 +59,7 @@ export class RealtyEntity {
   @Column({ type: 'integer' })
   area: number;
 
-  @Column("text", { array: true })
+  @Column('text', { array: true })
   nameFilter: string[];
 
   @Column({ type: 'varchar', length: 255 })
